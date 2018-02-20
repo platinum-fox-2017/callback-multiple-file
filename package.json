@@ -10,5 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "sleep": "^5.1.1"
-  }
+  },
+  "repository": "https://github.com/platinum-fox-2017/callback-multiple-file.git"
 }
