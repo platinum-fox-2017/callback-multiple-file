@@ -9,6 +9,8 @@
   "author": "Windiana",
   "license": "ISC",
   "dependencies": {
+    "node-gyp": "^3.6.2",
+    "rebuild": "^0.1.2",
     "sleep": "^5.1.1"
   }
 }
