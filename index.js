@@ -6,7 +6,6 @@ function match_data(parent_file, children_file) {
   let parent_data = []
   fs.readFile('./parents.json', 'utf-8', (errparent, dataparent) => {
     fs.readFile('./childrens.json', 'utf-8', (errchildren, datachildren) => {
-      sleep.sleep(5)
       let children = JSON.parse(datachildren)
       let parent = JSON.parse(dataparent)
       for (let index = 0; index < parent.length; index++) {
@@ -24,4 +23,5 @@ function match_data(parent_file, children_file) {
 }
 
 match_data('./parents.json', './childrens.json')
-console.log("Notification : Data sedang diproses !");
+console.log("Notification : Data sedang diproses !")
+sleep.sleep(5)
