@@ -9,6 +9,5 @@
   "author": "Windiana",
   "license": "ISC",
   "dependencies": {
-    "sleep": "^5.1.1"
   }
 }
