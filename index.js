@@ -4,6 +4,7 @@ var sleep = require('sleep');
 function match_data(parent_file, children_file,callback) {
   // your code here...
   fs.readFile(parent_file,(err,parents) => {
+    sleep.sleep(5)
     parents = JSON.parse(parents);
     for (var i = 0; i < parents.length; i++) {
       parents[i].childrens = [];
