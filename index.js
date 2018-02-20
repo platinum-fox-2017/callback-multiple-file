@@ -13,7 +13,7 @@ function match_data(parent_file, children_file) {
               parent_data[i].childrens = new Array();
               for(let j = 0; j < childrens.length; j++){
                   if(parent_data[i].last_name == childrens[j].family){
-                      parent_data[i].childrens.push(childrens[j]);
+                      parent_data[i].childrens.push(childrens[j].full_name);
                   }
               }
           }
