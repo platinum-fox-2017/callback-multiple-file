@@ -2,7 +2,7 @@ const fs = require('fs');
 var sleep = require('sleep');
 
 
-function findChildres(parentArr, childrenArr, cb) {
+function findChildrens(parentArr, childrenArr, cb) {
   for(let i = 0; i<parentArr.length; i++) {
     parentArr[i].childrens = [];
     for(let j=0; j<childrenArr.length; j++) {
@@ -14,26 +14,30 @@ function findChildres(parentArr, childrenArr, cb) {
   cb(parentArr)
 }
 
-function match_data(parent_file, children_file) {
-  console.log("Notification : Data sedang diproses !");
-  fs.readFile(parent_file,'utf8', function(err, parent_data){
+function parse(file, cb) {
+  fs.readFile(file,'utf8', function(err, data){
     if(err) console.log(err);
     else {
-      parent_data = JSON.parse(parent_data)
+      data = JSON.parse(data);
       sleep.sleep(5);
-      fs.readFile(children_file,'utf8', function(err, children_data){
-        if(err) console.log(err);
-        else {
-          children_data = JSON.parse(children_data);
-          sleep.sleep(5);
-          findChildres(parent_data, children_data, function(){
-            console.log(parent_data);
-          })
-        }
-      });
+      cb(data);
     }
   });
 }
 
-match_data('./parents.json', './childrens.json')
+function view(data) {
+  console.log(data)
+}
+function match_data(parent_file, children_file, cb) {
+  console.log("Notification : Data sedang diproses !");
+  parse(parent_file, function(parent_data){
+    parse(children_file, function(children_data){
+      findChildrens(parent_data, children_data, function(final_data){
+        cb(final_data);
+      })
+    })
+  })
+}
+
+match_data('./parents.json', './childrens.json', view)
 // console.log("Notification : Data sedang diproses !");
